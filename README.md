@@ -2,15 +2,19 @@
 Hi,I am a sophomore，it is my first game,it have many imperfections，I wish someone could improve it，Thanks！
 
 This is a small program made with vs. It has already realized the function: mobile eating food becomes longer, unrealized function: hit the wall and die, and when the snake encounters itself, it dies.
+
+
 code:
-/*
-*/
-#include<graphics.h>//图形界面头文件
+
+
+
+#include<graphics.h>
 #include<stdio.h>
 #include<time.h>
-#include<mmsystem.h>//多媒体设备接口 可用来做视频音乐播放
+#include<mmsystem.h>
 #pragma comment(lib,"winmm.lib")
 #include <conio.h>
+
 struct coor//坐标
 {
 	int x;
@@ -44,8 +48,10 @@ void FoodCoor();
 void DrawFood();
 int EatFood();
 void shibai();
+
 int main()
 {
+
 	GameInit();
 	int flag = 0;
 	while (1)
@@ -71,8 +77,10 @@ int main()
 	getchar();
 	return 0;
 }
+
 void GameInit()//游戏初始化
 {
+
 	initgraph(800, 480);
 	setfillcolor(LIGHTCYAN);//填充颜色
 	HRGN rgn = CreateRectRgn(600,0,800,480);//分数区要剪裁
@@ -85,7 +93,7 @@ void GameInit()//游戏初始化
 	outtextxy(625,50,L"贪吃蛇");//设置文字在625和100的地方输出文字
 	//一种很多文字的输出
 	settextstyle(15, 0, L"黑体");
-	RECT rect = { 625, 100, 780, 470 };//结构体
+	RECT rect = { 625, 100, 780, 470 };
 	drawtext(_T("[游戏说明]\n这是由宋宇航于2019.10.7创建的贪吃蛇游戏,速度有点快,是时候展示技术了!\
 				\n\n[控制说明]\
 				\n方向键:控制方向\
@@ -116,10 +124,7 @@ void GameInit()//游戏初始化
 
 	Food.flag = 0;//被吃状态
 
-}//界面
-
-//蛇动起来
-void SnakeMove()//算蛇的动作
+}void SnakeMove()
 {
 	
 	for (int i = Snake.n; i >0; i--)
@@ -157,6 +162,7 @@ void DrawSnake()
 
 void ChangeCh()
 {
+
 	int input;
 	input = getch();
 
@@ -191,6 +197,7 @@ void ChangeCh()
 
 void FoodCoor()
 {
+
 	srand(unsigned int(time(NULL)));
 	Food.fcr.x = rand() % (600 / 10) * 10;
 	Food.fcr.y = rand() % (480 / 10) * 10;
@@ -199,6 +206,7 @@ void FoodCoor()
 }
 void DrawFood()
 {
+
 	setcolor(WHITE);
 	fillroundrect(Food.fcr.x, Food.fcr.y, Food.fcr.x + 10, Food.fcr.y + 10, 3, 3);
 	
@@ -206,6 +214,7 @@ void DrawFood()
 
 int EatFood()
 {
+
 	if (Snake.scr[0].x == Food.fcr.x&&Snake.scr[0].y == Food.fcr.y)
 	{
 		Snake.n++;
@@ -218,8 +227,10 @@ int EatFood()
 	}
 
 }
+
 void shibai()
 {
+
 	cleardevice();
 	HRGN rgn = CreateRectRgn(600, 0, 800, 480);//分数区要剪裁
 	setcliprgn(rgn);//裁剪  剪裁区外画图形看不见 只能在建材区画图
@@ -233,4 +244,5 @@ void shibai()
 	settextstyle(15, 0, L"等线");
 	RECT rect = { 625, 100, 780, 470 };//结构体
 	drawtext(_T("你输了!按F5重新开始"), &rect, DT_WORDBREAK);
+	
 }
