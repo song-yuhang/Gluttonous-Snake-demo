@@ -15,30 +15,40 @@ code:
 #pragma comment(lib,"winmm.lib")
 #include <conio.h>
 
+
 struct coor//坐标
+
 {
+
 	int x;
 	int y;
 };
 typedef enum ch//方向
+
 {
+
 	up = 72,//固定的方向 虚拟键值
 	down = 80,
 	left = 75,
 	right = 77,
 }CH;
+
 struct snake//蛇的信息
+
 {
+
 	struct coor scr[100];//包含最多100节蛇的坐标信息
 	int n;				 //蛇的节数
 	CH ch;				 //蛇的方向
 }Snake;
 struct food
 {
+
 	struct coor fcr;//
 	int flag;//有没有被吃
 
 }Food;
+
 
 void GameInit();
 void SnakeMove();
