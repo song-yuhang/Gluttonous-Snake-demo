@@ -11,9 +11,6 @@ code:
 #include<mmsystem.h>//多媒体设备接口 可用来做视频音乐播放
 #pragma comment(lib,"winmm.lib")
 #include <conio.h>
-
-
-
 struct coor//坐标
 {
 	int x;
@@ -32,14 +29,12 @@ struct snake//蛇的信息
 	int n;				 //蛇的节数
 	CH ch;				 //蛇的方向
 }Snake;
-
 struct food
 {
 	struct coor fcr;//
 	int flag;//有没有被吃
 
 }Food;
-
 
 void GameInit();
 void SnakeMove();
@@ -49,30 +44,8 @@ void FoodCoor();
 void DrawFood();
 int EatFood();
 void shibai();
-
-
 int main()
 {
-	//initgraph(640, 480);//初始化图形界面 640 480
-	//rectangle(320,240,330,250);//左上角和右下角坐标
-	//circle(320,240,200);//坐标 半径
-		//roundrect(320,240,420,340,100,50);//圆角矩形 矩形320,240,420,340  矩形50半径
-	//int x=320, y=60;
-	//int iSpeed = 0;
-	//while (1)
-	//{
-	//	circle(x, y, 50);//
-	//	Sleep(100);
-	//	y += iSpeed++;
-	//	if (y<50 || y>480)
-	//	{
-	//		iSpeed = -iSpeed;
-	//	}
-	//	cleardevice();
-	//	
-	//}
-
-
 	GameInit();
 	int flag = 0;
 	while (1)
@@ -90,20 +63,15 @@ int main()
 		}
 		ChangeCh();
 		if (Snake.scr[Snake.n].x < 0 || Snake.scr[Snake.n].y< 0|| Snake.scr[Snake.n].x>640 || Snake.scr[Snake.n].y>480){
-			
 			cleardevice();
 			break;
 		}
 	}
 	void shibai();
 	getchar();
-	
 	return 0;
 }
-
-
-//游戏初始化
-void GameInit()//
+void GameInit()//游戏初始化
 {
 	initgraph(800, 480);
 	setfillcolor(LIGHTCYAN);//填充颜色
@@ -129,9 +97,9 @@ void GameInit()//
 	DeleteObject(rgn1);//不要占用系统内存
 	solidrectangle(0, 0, 600, 480);//
 
-	//PlaySound(L"", null, SND_FILENAME | SND_ASYNC | SND_LOOP);
-	//mciSendString(L"open D:\CloudMusic\111.mp3 alias ARNO", 0, 0, 0);
-	//mciSendString(L"play ARNO repeat", 0, 0, 0);//声道 采样率 数据块
+	PlaySound(L"", null, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	mciSendString(L"open D:\CloudMusic\111.mp3 alias ARNO", 0, 0, 0);
+	mciSendString(L"play ARNO repeat", 0, 0, 0);//声道 采样率 数据块
 	setbkcolor(RGB(220, 120, 150));
 	cleardevice();
 
